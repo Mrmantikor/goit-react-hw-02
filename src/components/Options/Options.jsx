@@ -1,7 +1,7 @@
 const Options = ({
   updateFeedback,
   feedbacksData,
-  handleResetClick,
+  resetFeedback,
   totalFeedback,
 }) => {
   return (
@@ -12,7 +12,7 @@ const Options = ({
         </li>
       ))}
       <li>
-        {totalFeedback > 0 && <button onClick={handleResetClick}>Reset</button>}
+        {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
       </li>
     </ul>
   );

@@ -1,5 +1,4 @@
-const Feedback = ({ feedbacks, totalFeedback }) => {
-  const positiveFeedback = Math.round((feedbacks.good / totalFeedback) * 100);
+const Feedback = ({ feedbacks, totalFeedback, positiveFeedback }) => {
   return (
     <ul>
       {Object.keys(feedbacks).map((item) => (

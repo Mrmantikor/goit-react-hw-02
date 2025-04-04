@@ -1,22 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "./Container/Container.jsx";
 import Description from "./Description/Description";
 import Feedback from "./Feedback/Feedback";
 import Options from "./Options/Options";
 import Notification from "./Notification/Notification.jsx";
 
+const initialState = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
+
 const App = () => {
-  const [feedback, setFeedback] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
+  const [feedback, setFeedback] = useState(
+    () => JSON.parse(localStorage.getItem("feedback-data")) || initialState
+  );
+
+  useEffect(() => {
+    localStorage.setItem("feedback-data", JSON.stringify(feedback));
+  }, [feedback]);
 
   const updateFeedback = (feedbackType) => {
-    setFeedback((prevFeedback) => ({
-      ...prevFeedback,
-      [feedbackType]: prevFeedback[feedbackType] + 1,
-    }));
+    setFeedback({
+      ...feedback,
+      [feedbackType]: feedback[feedbackType] + 1,
+    });
   };
 
   const totalFeedback = Object.values(feedback).reduce(
@@ -24,8 +32,10 @@ const App = () => {
     0
   );
 
-  const handleResetClick = () => {
-    setFeedback({ good: 0, neutral: 0, bad: 0 });
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
+
+  const resetFeedback = () => {
+    setFeedback(initialState);
   };
 
   return (
@@ -34,11 +44,15 @@ const App = () => {
       <Options
         updateFeedback={updateFeedback}
         feedbacksData={Object.keys(feedback)}
-        handleResetClick={handleResetClick}
+        resetFeedback={resetFeedback}
         totalFeedback={totalFeedback}
       />
       {totalFeedback > 0 ? (
-        <Feedback feedbacks={feedback} totalFeedback={totalFeedback} />
+        <Feedback
+          feedbacks={feedback}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       ) : (
         <Notification totalFeedback={totalFeedback} />
       )}
