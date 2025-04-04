@@ -1,0 +1,46 @@
+.descriptionContainer {
+  background: #000;
+  border-radius: 10px;
+  padding: 2rem 3rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  animation: colorCycle 4s infinite ease-in-out;
+}
+
+.subtitle {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: transparent;
+  background: linear-gradient(90deg, #e74c3c, #f1c40f, #2ecc71);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes colorCycle {
+  0% {
+    color: #e74c3c;
+  }
+  33% {
+    color: #f1c40f;
+  }
+  66% {
+    color: #2ecc71;
+  }
+  100% {
+    color: #e74c3c;
+  }
+}

@@ -1,0 +1,123 @@
+.feedbackContainer {
+  list-style: none;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.feedbackItem {
+  color: white;
+  font-weight: bold;
+}
+
+.totalFeedback {
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 10px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  background: #808080;
+  animation: blinkGray 5.5s infinite ease-in-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(128, 128, 128, 0.4), transparent);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    animation: subtleGlow 1.5s infinite ease-in-out;
+  }
+
+  @keyframes blinkGray {
+    0% {
+      color: red;
+      background: #808080;
+      box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+    }
+    50% {
+      color: yellow;
+      background: #a9a9a9;
+      box-shadow: 0 0 15px rgba(128, 128, 128, 0.8);
+    }
+    100% {
+      color: #218838;
+      background: #808080;
+      box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
+    }
+  }
+
+  @keyframes subtleGlow {
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.3;
+    }
+  }
+}
+
+.positiveFeedback {
+  color: hsl(calc(var(--percentage) * 1.2), 100%, 50%);
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #28a745, #218838);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+
+  &:hover {
+    color: #34b500;
+    text-shadow: 0 0 15px #34b500;
+  }
+}
+
+.neutralFeedback {
+  color: hsl(50, 100%, 50%);
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #ffc107, #ffca2c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+
+  &:hover {
+    color: #ff9800;
+    text-shadow: 0 0 15px #ff9800;
+  }
+}
+
+.negativeFeedback {
+  color: hsl(0, 100%, 50%);
+  font-weight: bold;
+  font-size: 1.2rem;
+  background: linear-gradient(45deg, #dc3545, #c82333);
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: color 0.5s ease-in-out, text-shadow 0.5s ease-in-out;
+
+  &:hover {
+    color: #ff0000;
+    text-shadow: 0 0 15px #ff0000;
+  }
+}
+
+.good {
+  @extend .positiveFeedback;
+}
+
+.neutral {
+  @extend .neutralFeedback;
+}
+
+.bad {
+  @extend .negativeFeedback;
+}

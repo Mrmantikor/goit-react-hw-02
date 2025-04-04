@@ -1,0 +1,80 @@
+.optionBox {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 3rem;
+
+  .optionButton {
+    padding: 15px 25px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(45deg, #1f1f1f, #333);
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background: linear-gradient(45deg, #3a3a3a, #505050);
+      border-color: #777;
+      color: #d1d1d1;
+      box-shadow: 0 0 12px rgba(180, 180, 180, 0.7);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      background: linear-gradient(45deg, #222, #444);
+      box-shadow: 0 0 8px rgba(120, 120, 120, 0.5);
+    }
+
+    &.good:hover {
+      border-color: #32cd32;
+      color: #32cd32;
+      box-shadow: 0 0 12px rgba(50, 205, 50, 0.6);
+    }
+
+    &.neutral:hover {
+      border-color: #facc15;
+      color: #facc15;
+      box-shadow: 0 0 12px rgba(250, 204, 21, 0.6);
+    }
+
+    &.bad:hover {
+      border-color: #ff4d4d;
+      color: #ff4d4d;
+      box-shadow: 0 0 12px rgba(255, 77, 77, 0.6);
+    }
+  }
+
+  .resetButton {
+    padding: 15px 25px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(45deg, #1f1f1f, #333);
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+    &:hover {
+      background: linear-gradient(45deg, #3a3a3a, #505050);
+      border-color: #777;
+      color: #d1d1d1;
+      box-shadow: 0 0 12px rgba(180, 180, 180, 0.7);
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+      background: linear-gradient(45deg, #222, #444);
+      box-shadow: 0 0 8px rgba(120, 120, 120, 0.5);
+    }
+  }
+}

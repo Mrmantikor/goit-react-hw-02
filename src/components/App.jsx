@@ -32,31 +32,36 @@ const App = () => {
     0
   );
 
-  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
+  const positiveFeedback = totalFeedback
+    ? Math.round((feedback.good / totalFeedback) * 100)
+    : 0;
 
   const resetFeedback = () => {
     setFeedback(initialState);
   };
 
   return (
-    <Container>
-      <Description />
-      <Options
-        updateFeedback={updateFeedback}
-        feedbacksData={Object.keys(feedback)}
-        resetFeedback={resetFeedback}
-        totalFeedback={totalFeedback}
-      />
-      {totalFeedback > 0 ? (
-        <Feedback
-          feedbacks={feedback}
+    <>
+      <Container>
+        <Description />
+        <Options
+          updateFeedback={updateFeedback}
+          feedbacksData={Object.keys(feedback)}
+          resetFeedback={resetFeedback}
           totalFeedback={totalFeedback}
-          positiveFeedback={positiveFeedback}
         />
-      ) : (
-        <Notification totalFeedback={totalFeedback} />
-      )}
-    </Container>
+        {totalFeedback > 0 ? (
+          <Feedback
+            feedbacks={feedback}
+            totalFeedback={totalFeedback}
+            positiveFeedback={positiveFeedback}
+          />
+        ) : (
+          <Notification totalFeedback={totalFeedback} />
+        )}
+      </Container>
+      <div className="signature">Bohdan Vasylovych</div>
+    </>
   );
 };
 
