@@ -12,15 +12,11 @@ const App = () => {
     bad: 0,
   });
 
-  const handleOptionClick = (banan) => {
-    setFeedback((prev) => ({
-      ...prev,
-      [banan]: prev[banan] + 1,
+  const updateFeedback = (feedbackType) => {
+    setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [feedbackType]: prevFeedback[feedbackType] + 1,
     }));
-  };
-
-  const resetFeedback = () => {
-    setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
   const totalFeedback = Object.values(feedback).reduce(
@@ -28,18 +24,23 @@ const App = () => {
     0
   );
 
+  const handleResetClick = () => {
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
+  };
+
   return (
     <Container>
       <Description />
-      <Options onLeaveFeedback={handleOptionClick} />
+      <Options
+        updateFeedback={updateFeedback}
+        feedbacksData={Object.keys(feedback)}
+        handleResetClick={handleResetClick}
+        totalFeedback={totalFeedback}
+      />
       {totalFeedback > 0 ? (
-        <Feedback
-          feedback={feedback}
-          total={totalFeedback}
-          onReset={resetFeedback}
-        />
+        <Feedback feedbacks={feedback} totalFeedback={totalFeedback} />
       ) : (
-        <Notification message="No feedback given" />
+        <Notification totalFeedback={totalFeedback} />
       )}
     </Container>
   );

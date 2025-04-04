@@ -1,5 +1,5 @@
-const Notification = () => {
-  return <div>Notification</div>;
+const Notifications = () => {
+  return <p>No feedback yet</p>;
 };
 
-export default Notification;
+export default Notifications;

@@ -1,11 +1,20 @@
-const Options = () => {
+const Options = ({
+  updateFeedback,
+  feedbacksData,
+  handleResetClick,
+  totalFeedback,
+}) => {
   return (
-    <div>
-      <button type="button">Good</button>
-      <button type="button">Neutral</button>
-      <button type="button">Bad</button>
-      <button type="button">Reset</button>
-    </div>
+    <ul>
+      {feedbacksData.map((item) => (
+        <li key={item}>
+          <button onClick={() => updateFeedback(item)}>{item}</button>
+        </li>
+      ))}
+      <li>
+        {totalFeedback > 0 && <button onClick={handleResetClick}>Reset</button>}
+      </li>
+    </ul>
   );
 };
 
